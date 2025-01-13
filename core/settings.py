@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'users',
     'main',
     'articles',
+    'utility'
 ]
 
 MIDDLEWARE = [
@@ -74,9 +75,15 @@ DATABASES = {
     }
 }
 
+LOGIN_REDIRECT_URL = '/'  # Login muvaffaqiyatli bo'lgandan keyin qaysi sahifaga yo'naltirish kerakligini belgilang.
+LOGOUT_REDIRECT_URL = '/login/'  # Logoutdan keyin qaysi sahifaga yo'naltirish kerakligini belgilang.
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+
+AUTH_USER_MODEL = 'users.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Asia/Tashkent"
 
 USE_I18N = True
 
@@ -115,3 +122,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'xaxj fqlp osjc imyu'
+
+CELERY_TIMEZONE = "Asia/Tashkent"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 5 * 60
